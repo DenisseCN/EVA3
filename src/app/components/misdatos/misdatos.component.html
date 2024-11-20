@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ 'HomePage.Button.Data' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-item>
+    <ion-input label="Usuario" labelPlacement="floating" [(ngModel)]="user.userName" readonly="true"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Correo" labelPlacement="floating" [(ngModel)]="user.email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Contraseña" type="password" labelPlacement="floating" [(ngModel)]="user.password"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Pregunta secreta" labelPlacement="floating" [(ngModel)]="user.secretQuestion"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Respuesta secreta" labelPlacement="floating" [(ngModel)]="user.secretAnswer"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Nombre" labelPlacement="floating" [(ngModel)]="user.firstName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Apellido" labelPlacement="floating" [(ngModel)]="user.lastName"></ion-input>
+  </ion-item>
+
+  <ion-item class="font-size-12">
+    <ion-select [(ngModel)]="user.educationalLevel.id" (ionChange)="updateEducationalLevel($event)" label="Nivel Educacional" labelPlacement="floating">
+      <ion-select-option *ngFor="let level of educationalLevels" [value]="level.id">
+        {{ level.name }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Fecha de nacimiento" labelPlacement="floating" type="date" [(ngModel)]="user.dateOfBirth" (ionChange)="onDateOfBirthChange($event)"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Dirección" labelPlacement="floating" [(ngModel)]="user.address"></ion-input>
+  </ion-item>
+
+  <ion-button color="primary" expand="full" (click)="saveUser()">
+    {{ 'misDatos' | translate }}
+    <ion-icon name="checkmark-done-circle-outline"></ion-icon>
+  </ion-button>
+</ion-content>

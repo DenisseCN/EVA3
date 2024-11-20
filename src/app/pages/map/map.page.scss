@@ -1,0 +1,47 @@
+#mapId {
+  height: 100vh; /* Hace que el mapa ocupe todo el alto de la pantalla */
+}
+
+.logo {
+  width: 80%;
+  max-width: 150px;
+  margin: 0 auto;
+  display: block;
+}
+
+.tit {
+  font-weight: bold;       /* Texto en negrita */
+  font-size: 16px;         /* Tamaño de fuente más pequeño */
+  text-align: center;      /* Alineación centrada */
+}
+
+/* Fondo blanco en todos los ion-content */
+ion-content.mapa {
+  --background: #ffffffdc; /* Establece el fondo blanco */
+}
+
+.transparent-bg {
+  font-size: 15px;
+  --background: #031a30;     
+  border-radius: 10px; 
+  height: 50px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+.logout-button-container {
+  margin-right: 1px;      /* Ajusta el margen derecho para colocar el botón más a la derecha */
+}
+
+.logout-button {
+  --background: #ffffff;      /* Fondo blanco */
+  --color: #0a0061;           /* Color del texto o ícono al presionar */
+  --background-activated: #e0e0e0; 
+}
+
+p{
+  text-align: center;
+  color: #000000;
+  font-weight: bolder;
+  font-size: 25px;
+}

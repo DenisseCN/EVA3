@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary" class="transparent-bg">
+  <!-- Título centrado con tamaño ajustado -->
+  <ion-title class="tit"> {{ 'AppName' | translate }} </ion-title>
+  
+  <!-- Botón de logout en el lado derecho -->
+  <ion-buttons slot="end" class="logout-button-container">
+    <ion-button shape="round" size="small" class="logout-button" (click)="salirAlogin()">
+      <ion-icon slot="start" name="log-out-outline" size="small"></ion-icon>
+      {{ 'ThemePage.Button.Logout' | translate }}
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true" class="ion-padding card-background">
+  <img class="background-image" src="/assets/images/compu.jpg">
+  <ion-card-header class="centered-content">
+    <img src="../../../assets/images/Duoc.png" alt="Logo Duoc UC" class="logo" style="width: 100%; max-width: 300px;">
+  </ion-card-header>
+  <br>
+
+  <div class="center-container">
+    <ion-toolbar color="primary">
+      <h1 class="ing">{{ 'PreguntaPage.Titulo' | translate}}</h1>
+    </ion-toolbar>
+    <br><br>
+
+    <ion-card *ngIf="user" class="ion-text-center card">
+      <ion-card-content>
+        <ion-card-subtitle>{{ user?.firstName }} {{ user?.lastName }}</ion-card-subtitle>
+        <ion-card-subtitle>{{ user?.secretQuestion }}</ion-card-subtitle>
+        <br>
+        <ion-item class="large-rounded-item">
+          <ion-label class="correo" position="stacked">{{ 'Login.Label.Respuesta' | translate }}</ion-label>
+          <ion-input [(ngModel)]="respuesta" ></ion-input>
+        </ion-item>
+  
+        <br>
+        
+
+      </ion-card-content>
+    </ion-card>
+    <ion-button color="primary" class="enter-button" expand="block" size="large" (click)="validarRespuestaSecreta()">
+      {{ 'CorreoPage.Button.Verificar' | translate }}
+      <ion-icon name="checkbox-outline"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

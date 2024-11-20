@@ -1,0 +1,125 @@
+
+
+/* Contenedor centrado para todo el contenido */
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+
+/* Logo centrado */
+.logo {
+  width: 80%;
+  max-width: 150px;
+  margin: 0 auto;
+  display: block;
+}
+
+
+
+/* Estilo de la tarjeta centrada */
+.card {
+  background-color: rgba(255, 255, 255, 0.308); /* Fondo semi-transparente */
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Título y texto en negro */
+ion-label {
+  color: black;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+ion-toolbar {
+  font-size: 15px;
+  --background: #031a30;     
+  border-radius: 10px; 
+  height: 20px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.transparent-bg {
+  font-size: 15px;
+  --background: #031a30;     
+  border-radius: 10px; 
+  height: 50px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.tit {
+  font-weight: bold;       /* Texto en negrita */
+  font-size: 16px;         /* Tamaño de fuente más pequeño */
+  text-align: center;      /* Alineación centrada */
+}
+
+.logout-button-container {
+  margin-right: -15px;      /* Ajusta el margen derecho para colocar el botón más a la derecha */
+}
+
+.logout-button {
+  --background: #ffffff;      /* Fondo blanco */
+  --color: #0a0061;           /* Color del texto o ícono al presionar */
+  --background-activated: #e0e0e0; 
+}
+
+
+
+
+.ing {
+  color: #ffffff;       /* Color blanco */
+  font-size: 18px;      /* Tamaño de fuente más pequeño */
+  font-weight: normal;  /* Opcional: Cambia el peso si deseas */
+  text-align: center;   /* Centra el texto */
+  margin: 0;            /* Remueve el margen por defecto de <h1> */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente para coherencia */
+}
+
+
+
+.titu{
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-size: 20px;
+  font-weight: bolder;
+
+}
+
+
+
+
+
+.enter-button {
+  font-size: 15px;            /* Ajusta el tamaño de texto del botón */
+  padding: 12px 24px;         /* Añade padding para que el botón sea más grande */
+  --background: #031a30; /* Color inicial */
+  --color: #ffffff; /* Color de texto */
+  --background-activated: #67638a; /* Fondo blanco al presionar */
+}
+
+
+ion-input {
+  color: #000000; 
+
+}
+/* Botón con estilo azul */
+ion-button {
+  --background: #031a30;  /* Azul estándar */
+  color: #ffffff;
+  font-size: 14px;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+}

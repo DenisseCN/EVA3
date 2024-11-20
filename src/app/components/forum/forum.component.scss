@@ -1,0 +1,138 @@
+.tituloPrincipal {
+  font-size: 1em;
+  color: darkblue;
+  font-weight: bold;
+  text-shadow: rgb(0, 0, 0);
+}
+
+ion-list{
+  background: #f4fcffe3; // Gradiente de naranja a rosado
+
+}
+
+ion-content {
+  // Fondo transparente para los ion-card
+  .background-image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; // Coloca la imagen en el fondo
+  }
+
+  .dos{
+    color: rgb(0, 0, 0);
+  }
+
+  ion-card {
+    background: rgb(233, 213, 213); // Fondo blanco con transparencia
+    box-shadow: none; // Elimina el sombreado
+    border-radius: 10px; // Ajusta el radio de borde si deseas bordes redondeados
+
+  } 
+
+  ion-card{
+    background: linear-gradient(45deg, #2e136d, #b9ebff); // Gradiente de naranja a rosado
+
+  }
+
+  
+
+
+  // Grosor adicional para el texto con color primary
+  .uno ion-label[color="primary"] {
+    font-weight: bold; // Aumenta el grosor de las letras
+  }
+}
+
+// Ajusta los botones de fab con color primario si es necesario
+ion-fab-button[color="primary"] {
+  font-weight: bold;
+}
+
+
+.publicacionSeleccionada  {
+  font-size: small !important;
+  color: darkgreen !important;
+  font-weight: bolder;
+}
+
+h6 {
+  color: darkgreen;
+}
+
+
+
+.tres{
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+ion-item {
+  --padding-bottom: 15px; 
+  --background: rgba(255, 255, 255, 0.849);    
+  color: #000000; 
+  height: 100px; 
+  --border-radius: 100px;           /* Borde redondeado */
+  text-align: center;
+}
+
+ion-card-title{
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  font-weight: bolder;
+  color:#000000;
+}
+h4 {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.sin-bordes {
+  box-shadow: none;
+}
+
+.con-padding-top {
+  margin-top: 15px !important;
+}
+
+.enter-button {
+  font-size: 15px;            /* Ajusta el tamaño de texto del botón */
+  padding: 12px 24px;         /* Añade padding para que el botón sea más grande */
+  --background: #031a30; /* Color inicial */
+  --color: #ffffff; /* Color de texto */
+  --background-activated: #67638a; /* Fondo blanco al presionar */
+}
+
+.custom-modal {
+  --width: auto; /* Ajusta automáticamente al ancho del contenido */
+  --height: auto; /* Ajusta automáticamente al alto del contenido */
+  --max-width: 90%; /* Puedes ajustar el máximo ancho */
+  --max-height: 90%; /* Puedes ajustar el máximo alto */
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+}
+
+/* Estilo adicional para asegurar que el contenido se ajuste */
+.modal-content {
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.block {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-modal {
+  --height: auto;
+}

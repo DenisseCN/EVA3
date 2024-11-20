@@ -1,0 +1,77 @@
+<ion-header color="primary">
+  <ion-toolbar color="primary" class="transparent-bg">
+    <!-- Selección de idioma en el lado izquierdo -->
+    <div slot="start" class="ion-margin">
+      <app-language #selectLanguage></app-language>
+    </div>
+
+    <!-- Botón de tema en el lado derecho -->
+    <div slot="end" class="ion-margin">
+      <ion-button color="primary" class="white-theme-button" shape="round" size="small" (click)="navigateTheme()">
+        {{ 'ThemePage.Label.Theme' | translate }}
+        <ion-icon slot="start" name="color-wand-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+
+</ion-header>
+<br><br><br>
+
+
+
+
+<ion-content [fullscreen]="true">
+  <img class="background-image" src="/assets/images/pao.jpg">
+
+  <ion-card class="login-container transparent-input">
+    <ion-card-header>
+      <img src="../../../assets/images/Duoc.png" alt="Logo Duoc UC" class="logo" style="width: 100%; max-width: 300px;">
+      <br><br>
+        <ion-toolbar color="primary">
+          <ion-label  class="ing">{{ 'AppName' | translate }}</ion-label>
+        </ion-toolbar>
+    </ion-card-header>
+
+    <ion-card-content class="transparent-input text-center">
+      
+      <h1 class="tituloo">{{ 'Login.Title.Login' | translate }}</h1>
+      <ion-item class="margin-bottom-6 float-left-landscape">
+        <ion-input 
+          label="{{ 'Login.Label.Email' | translate }}" 
+          labelPlacement="floating"
+          [(ngModel)]="correo" 
+          placeholder="{{ 'Login.Placeholder.Email' | translate }}">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="margin-bottom-6 float-right-landscape">
+        <ion-input 
+          label="{{ 'Login.Label.Password' | translate }}"
+          labelPlacement="floating"
+          [(ngModel)]="password" 
+          placeholder="{{ 'Login.Placeholder.Password' | translate }}"
+          type="password">
+        </ion-input>
+      </ion-item>
+      <br>
+
+      <div class="ingreso-1">
+        <ion-button color="primary" class="enter-button normal-text" shape="round" (click)="login()">
+          {{ 'Login.Button.Login' | translate }}
+          <ion-icon slot="start" name="finger-print-outline"></ion-icon>
+        </ion-button>
+      </div>
+      
+    </ion-card-content>
+  </ion-card> 
+</ion-content>
+
+<ion-footer class="footer-links">
+  <a (click)="navigateCorreo()" class="footer-link">
+    {{ 'Login.Button.ForgotPassword' | translate }}
+  </a>
+  
+  <a (click)="navigateMap()" class="footer-link">
+    {{ 'Login.Button.Ruta' | translate }}
+  </a>
+</ion-footer>
