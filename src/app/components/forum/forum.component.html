@@ -1,0 +1,63 @@
+<ion-content>
+  <img class="background-image" src="/assets/images/m.jpg">
+  <a id="topOfPage" href="#topOfPage"></a>
+  <!-- Formulario para crear/editar publicaciones -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ 'ForumPage' | translate }}</ion-card-title>
+      <ion-card-subtitle>{{ selectedPostText }}</ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label class="tres" position="stacked" color="primary">{{ 'Titulo' | translate }}</ion-label>
+        <ion-input [(ngModel)]="post.title" placeholder="Ingresa el título"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label class="tres" position="stacked" color="primary">Descripción</ion-label>
+           <ion-textarea [(ngModel)]="post.body" placeholder="Escribe el contenido"></ion-textarea>
+        </ion-item>
+        
+    
+      
+    </ion-card-content>
+    
+  
+
+  <div class="ion-text-center margin-top-6">
+    <ion-button class="enter-button" color="medium" shape="round" (click)="cleanPost()">{{ 'Limpiar' | translate }}</ion-button>
+    <ion-button class="enter-button" color="primary" shape="round" (click)="savePost()">
+      {{ post.id ? 'Actualizar' : 'Guardar' }}
+    </ion-button>
+  </div>
+
+
+
+  <ion-list>
+    <ion-card-title class="con-padding-top" color="primary">{{ 'Publicaciones' | translate }}</ion-card-title>
+    <ion-card *ngFor="let post of posts; trackBy: getPostId">
+      <ion-card-header>
+        <h6>({{ 'Publi' | translate }} #{{ post.id }}) {{ post.author }}</h6>
+        <h4>{{ post.title }}</h4>
+      </ion-card-header>
+  
+      <ion-card-content class="dos">
+        <p>{{ post.body }}</p>
+      </ion-card-content>
+  
+      <!-- Contenedor para alinear los botones horizontalmente a la derecha -->
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-right: 16px;">
+        <ion-fab-button size="small" color="primary" (click)="editPost(post)">
+          <ion-icon name="pencil-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button size="small" color="danger" (click)="deletePost(post)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-fab-button>
+      </div>
+    </ion-card>
+  </ion-list>
+  
+
+</ion-content>

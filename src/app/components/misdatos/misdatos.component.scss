@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  background-color: #ffffff;
+  height: 100%;
+  color: #333; /* Color de texto para mejorar la legibilidad sobre el fondo blanco */
+}
+
+ion-content {
+  --background: linear-gradient(45deg, #fafafa, #00076d);
+}
+
+ion-title{
+  font-size: 20px;
+  color: #000000;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: bolder;
+}
+
+ion-toolbar {
+  --background: #d6d6d6; /* Fondo ligeramente gris para el encabezado */
+  color: #080808;
+}
+
+ion-item, ion-input, ion-select{
+  --background: #ffffff;
+  --color: #000000;
+  font-size: 18px;
+}

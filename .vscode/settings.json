@@ -1,0 +1,15 @@
+{
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "@ionic/angular/common",
+    "@ionic/angular"
+  ],
+  "java.import.gradle.java.home": "C:\\Archivos de programa\\Java\\jdk-22",
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "android-webview-debug.adbPath": "C:\\Usuarios\\traba\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe",
+  "editor.minimap.enabled": false,
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
+  "files.autoSave": "afterDelay",
+  "editor.tabSize": 2,
+  "editor.mouseWheelZoom": true
+}
+

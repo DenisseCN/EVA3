@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary" class="transparent-bg">
+  <!-- Título centrado con tamaño ajustado -->
+  <ion-title class="tit"> {{ 'AppName' | translate }} </ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding card-background">
+  <img class="background-image" src="/assets/images/correcto.jpg">
+  <ion-card-header class="centered-content">
+    <img src="../../../assets/images/Duoc.png" alt="Logo Duoc UC" class="logo" style="width: 100%; max-width: 300px;">
+  </ion-card-header>
+  <br><br>
+
+
+  <div class="center-container">
+    <ion-toolbar color="primary">
+      <h1 class="ing">{{ 'CorrectoPage.Recuperado' | translate}}</h1>
+    </ion-toolbar>
+    <br><br>
+
+    <ion-card class="ion-text-center card">
+        <ion-card-content>
+          <!-- Muestra la contraseña del usuario -->
+          <div *ngIf="user && user.password" class="ion-text-center margin-top-6">
+            <ion-label>{{ 'Login.Label.Contraseña' | translate }} {{ user.password }}</ion-label>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      <br><br>
+
+      <ion-button color="primary" class="enter-button normal-text" shape="round" (click)="salirAlogin()">
+        {{ 'Login.Label.VolverIniciar' | translate }}
+        <ion-icon name="thumbs-up-outline"></ion-icon>
+        
+      </ion-button>
+    </div>
+</ion-content>

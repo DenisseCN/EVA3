@@ -1,0 +1,76 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ 'HomePage.Button.Data' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-item>
+    <ion-input label="Usuario" labelPlacement="floating" [(ngModel)]="user.userName" readonly="true">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Correo" labelPlacement="floating" [(ngModel)]="user.email"
+    (keyup.enter)="itemPassword.setFocus()">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input #itemPassword
+    label="Contraseña" type="password" labelPlacement="floating" [(ngModel)]="user.password"
+    (keyup.enter)="itemSecretQuestion.setFocus()">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input #itemSecretQuestion
+    label="Pregunta secreta" labelPlacement="floating" [(ngModel)]="user.secretQuestion"
+    (keyup.enter)="itemSecretAnswer.setFocus()">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input #itemSecretAnswer
+    label="Respuesta secreta" labelPlacement="floating" [(ngModel)]="user.secretAnswer"
+    (keyup.enter)="itemFirstName.setFocus()">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input #itemFirstName
+    label="Nombre" labelPlacement="floating" [(ngModel)]="user.firstName"
+    (keyup.enter)="itemLastName.setFocus()">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input #itemLastName
+    label="Apellido" labelPlacement="floating" [(ngModel)]="user.lastName"
+    (keyup.enter)="itemAdress.setFocus()">
+    </ion-input>
+  </ion-item>
+
+  <ion-item class="font-size-12">
+    <ion-select [(ngModel)]="user.educationalLevel.id" (ionChange)="updateEducationalLevel($event)" label="Nivel Educacional" labelPlacement="floating">
+      <ion-select-option *ngFor="let level of educationalLevels" [value]="level.id">
+        {{ level.name }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-input label="Fecha de nacimiento" labelPlacement="floating" type="date" [(ngModel)]="user.dateOfBirth" (ionChange)="onDateOfBirthChange($event)"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-input #itemAdress
+    label="Dirección" labelPlacement="floating" [(ngModel)]="user.address"></ion-input>
+  </ion-item>
+
+  <ion-button color="primary" expand="full" (click)="saveUser()">
+    {{ 'misDatos' | translate }}
+    <ion-icon name="checkmark-done-circle-outline"></ion-icon>
+  </ion-button>
+</ion-content>

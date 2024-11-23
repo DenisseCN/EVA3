@@ -1,0 +1,36 @@
+ion-content {
+  --padding-top: 20px; /* Ajusta el padding para pantallas más pequeñas */
+  --padding-bottom: 20px;
+  --padding-end: 20px;
+  --padding-start: 20px;
+}
+ion-toolbar {
+  --background: rgba(255, 255, 255, 0.281); 
+  border-radius: 10px; 
+  color: #000000; 
+  height: 50px; 
+  display: inline-table; 
+  align-items: center; 
+  justify-content: space-between;
+  padding: 0 16px;
+
+  &.custom-toolbar {
+      background-color: #FFB800 !important;
+      --ion-color-primary: #FFB800;
+  }
+}
+
+.profile-container {
+  margin-bottom: 20px;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.campo-invalido {
+  --border-color: var(--ion-color-danger);
+  --ion-border-color: var(--ion-color-danger);
+}

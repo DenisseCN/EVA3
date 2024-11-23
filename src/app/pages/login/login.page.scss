@@ -1,0 +1,160 @@
+
+.card-background {
+  position: relative;
+  background-image: url('../../../assets/images/pao.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 20px; 
+}
+
+ion-card {
+  --background: rgba(230, 223, 223, 0.205); /* Fondo semi-transparente */
+  border-radius: 20px;
+  padding: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
+  font-size: 15px;
+}
+
+ion-item {
+  --padding-bottom: 15px; 
+  --background: rgba(255, 255, 255, 0.377);    
+  border-radius: 9px; 
+  color: #000000; 
+  height: 55px; 
+  display: flex; 
+  align-items: center; 
+}
+
+ion-input {
+  color: #000000; 
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: bold; 
+}
+
+
+
+ion-card-header {
+  text-align: center;
+}
+
+ion-toolbar {
+  font-size: 15px;  
+  border-radius: 10px; 
+  height: 20px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.transparent-bg {
+  font-size: 20px;
+      
+  border-radius: 10px; 
+  height: 40px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+
+ion-button.white-theme-button {
+  --background: #ffffff;        /* Fondo blanco */
+  --color: #031a30;             /* Texto en color oscuro */
+  border: 1px solid #031a30;    /* Borde oscuro */
+  border-radius: 8px;           /* Esquinas redondeadas */
+  font-weight: bold;            /* Texto en negrita */
+  padding: 4px 12px;            /* Padding para ajustar el tamaño */
+}
+
+.logo {
+  width: 80%;
+  max-width: 150px;
+  margin: 0 auto;
+  display: block;
+}
+
+
+
+ion-button {
+  color: #ffffff;  
+  font-size: 14px;
+  padding: 1px 110px; 
+  border-radius: 20px; 
+}
+
+.tituloo{
+  color: #ffffff;
+  text-align: center;
+  font-size: 21px; /* Tamaño un poco más grande para mayor impacto */
+  font-weight: bold;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+
+
+}
+
+
+.ing {
+  color: #ffffff;    
+  font-size: 14px;      
+  font-weight: normal; 
+  text-align: center;   
+  margin: 0;            
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+  text-shadow: 2px 10px 10px rgba(0, 0, 0, 0.6); 
+}
+
+
+
+ion-label a:hover {
+  text-decoration: underline; //linea para pasar el mouse en recuperar
+
+}
+
+
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.footer-link {
+  color: #ffffff;              /* Color del enlace */
+  text-decoration: none;        /* Sin subrayado */
+  font-weight: bold;            /* Texto en negrita */
+  padding: 10px 0;              /* Espaciado entre los enlaces */
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.footer-link:hover {
+  text-decoration: underline;    /* Subrayado al pasar el ratón */
+}
+
+
+.ingreso-1 {
+  display: flex;
+  align-items: center;       /* Alinea verticalmente en el centro */
+  justify-content: center;    /* Alinea horizontalmente en el centro */
+}
+
+.enter-button {
+  font-size: 15px;            /* Ajusta el tamaño de texto del botón */
+  padding: 12px 24px;         /* Añade padding para que el botón sea más grande */
+  --color: #ffffff; /* Color de texto */
+
+}
+
