@@ -34,7 +34,9 @@
         <br>
         <ion-item class="large-rounded-item">
           <ion-label class="correo" position="stacked">{{ 'Login.Label.Respuesta' | translate }}</ion-label>
-          <ion-input [(ngModel)]="respuesta" ></ion-input>
+          <ion-input [(ngModel)]="respuesta" 
+          (keyup.enter)="validarRespuestaSecreta()"> <!-- Ejecuta validarRespuestaSecreta() al presionar Enter -->
+          </ion-input>
         </ion-item>
   
         <br>

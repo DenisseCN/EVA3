@@ -75,5 +75,8 @@ export class LoginPage implements ViewWillEnter {
     this.router.navigate(['/correo']);
   }
 
+  navigateRegistrarme() {
+    this.router.navigate(['/registrarme']);
+  }
 
 }

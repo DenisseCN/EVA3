@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { DinosaurComponent } from 'src/app/components/dinosaur/dinosaur.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { IonContent } from '@ionic/angular/standalone'
@@ -14,7 +14,10 @@ import { ScannerService } from 'src/app/services/scanner.service';
 import { WelcomeComponent } from 'src/app/components/welcome/welcome.component';
 import { ForumComponent } from 'src/app/components/forum/forum.component';
 import { MisdatosComponent } from 'src/app/components/misdatos/misdatos.component';
-
+import { UsuariosComponent } from 'src/app/components/usuarios/usuarios.component';
+import { DatabaseService } from 'src/app/services/database.service';
+import { User } from 'src/app/model/user';
+import { log } from 'src/app/tools/message-functions';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +28,7 @@ import { MisdatosComponent } from 'src/app/components/misdatos/misdatos.componen
       CommonModule, FormsModule, TranslateModule, IonContent
     , HeaderComponent, FooterComponent
     , WelcomeComponent, QrWebScannerComponent, DinosaurComponent
-    , ForumComponent, MisdatosComponent
+    , ForumComponent, MisdatosComponent, UsuariosComponent
   ]
 })
 export class HomePage {
@@ -33,7 +36,13 @@ export class HomePage {
   @ViewChild(FooterComponent) footer!: FooterComponent;
   selectedComponent = 'welcome';
 
-  constructor(private auth: AuthService, private scanner: ScannerService) { }
+  user: User | undefined;
+
+  constructor(
+      private db: DatabaseService
+    , private auth: AuthService
+    , private scanner: ScannerService
+    , private cdr: ChangeDetectorRef) { }
 
   ionViewWillEnter() {
     this.changeComponent('qrwebscanner');
@@ -68,6 +77,26 @@ export class HomePage {
     }
     
     this.changeComponent('welcome');
+  }
+  // Verifica si el usuario es admin
+  async checkUserRole() {
+    this.user = await this.db.getLoggedInUser();
+
+    if (this.user?.userName === 'admin') {
+      debugger
+      // Si es admin, mostramos el componente de usuarios
+      this.selectedComponent = 'usuarios';
+      console.log('ingresado como admin');
+      console.log('Selected Component:', this.selectedComponent);
+    } else {
+      // Si no es admin, muestra el componente QR
+      this.selectedComponent = 'qrwebscanner';
+      console.log('ingresado como usuario común');
+      console.log('Selected Component:', this.selectedComponent);
+    }
+  
+    // Forzar la detección de cambios
+    this.cdr.detectChanges();
   }
 
   footerClick(button: string) {

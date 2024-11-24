@@ -8,11 +8,12 @@
   <app-welcome>
   </app-welcome>
 
-  <app-qrwebscanner 
-    *ngIf="selectedComponent === 'qrwebscanner'" 
-    (scanned)="webQrScanned($event)"
-    (stopped)="webQrStopped()">
-  </app-qrwebscanner >
+  <ng-container *ngIf="selectedComponent === 'qrwebscanner'">
+    <app-qrwebscanner 
+      (scanned)="webQrScanned($event)"
+      (stopped)="webQrStopped()">
+    </app-qrwebscanner>
+  </ng-container>
   
   <app-welcome 
     *ngIf="selectedComponent === 'welcome'">
@@ -28,6 +29,11 @@
   <app-misdatos
   *ngIf="selectedComponent === 'misdatos'">
   </app-misdatos>
+
+  <!-- Componente de Gestión de Usuarios solo para administradores -->
+  <ng-container *ngIf="selectedComponent === 'usuarios'">
+    <app-usuarios></app-usuarios>
+  </ng-container>
 
 
 

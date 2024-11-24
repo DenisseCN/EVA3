@@ -16,25 +16,25 @@ export class DatabaseService {
   }
 
   testUser1 = User.getNewUsuario(
-    'atorres', 
-    'atorres@duocuc.cl', 
-    '1234', 
-    '¿Cuál es tu animal favorito?', 
+    'atorres',
+    'atorres@duocuc.cl',
+    '1234',
+    '¿Cuál es tu animal favorito?',
     'gato',
-    'Ana', 
-    'Torres', 
+    'Ana',
+    'Torres',
     EducationalLevel.findLevel(6)!,
     new Date(2000, 0, 5),
     'La Florida',
     'default-image.jpg');
 
   testUser2 = User.getNewUsuario(
-    'jperez', 
-    'jperez@duocuc.cl', 
-    '5678', 
+    'jperez',
+    'jperez@duocuc.cl',
+    '5678',
     '¿Cuál es tu postre favorito?',
     'panqueques',
-    'Juan', 
+    'Juan',
     'Pérez',
     EducationalLevel.findLevel(5)!,
     new Date(2000, 1, 10),
@@ -42,13 +42,13 @@ export class DatabaseService {
     'default-image.jpg');
 
   testUser3 = User.getNewUsuario(
-    'cmujica', 
-    'cmujica@duocuc.cl', 
-    '0987', 
+    'cmujica',
+    'cmujica@duocuc.cl',
+    '0987',
     '¿Cuál es tu vehículo favorito?',
     'moto',
-    'Carla', 
-    'Mujica', 
+    'Carla',
+    'Mujica',
     EducationalLevel.findLevel(6)!,
     new Date(2000, 2, 20),
     'Providencia',
@@ -72,7 +72,7 @@ export class DatabaseService {
         image            TEXT NOT NULL
       );
       `]
-    }
+    },
   ];
 
   sqlInsertUpdate = `
@@ -99,8 +99,30 @@ export class DatabaseService {
 
   async initializeDataBase() {
     try {
-      await this.sqliteService.createDataBase({database: this.dataBaseName, upgrade: this.userUpgrades});
+      await this.sqliteService.createDataBase({ database: this.dataBaseName, upgrade: this.userUpgrades });
       this.db = await this.sqliteService.open(this.dataBaseName, false, 'no-encryption', 1, false);
+
+      //admin
+      // Verifica si existe un superusuario
+      const adminUser = await this.readUser('admin');
+      if (!adminUser) {
+        // Si no existe, crea el superusuario
+        const superUser = User.getNewUsuario(
+          'admin',
+          'admin@duocuc.cl',
+          'admin1234', // Contraseña predeterminada
+          '¿Cuál es tu color favorito?',
+          'azul',
+          'Super',
+          'Usuario',
+          EducationalLevel.findLevel(6)!, // Nivel educativo
+          new Date(1980, 5, 15),
+          'Santiago',
+          ''
+        );
+        await this.saveUser(superUser);
+      }
+
       await this.createTestUsers();
       await this.readUsers();
     } catch (error) {
@@ -115,19 +137,16 @@ export class DatabaseService {
       if (!user1) {
         await this.saveUser(this.testUser1);
       }
-  
       // Verifica y guarda al usuario 'jperez' si no existe
       const user2 = await this.readUser(this.testUser2.userName);
       if (!user2) {
         await this.saveUser(this.testUser2);
       }
-  
       // Verifica y guarda al usuario 'cmujica' si no existe
       const user3 = await this.readUser(this.testUser3.userName);
       if (!user3) {
         await this.saveUser(this.testUser3);
       }
-  
     } catch (error) {
       showAlertError('DataBaseService.createTestUsers', error);
     }
@@ -140,7 +159,6 @@ export class DatabaseService {
   // pero si el registro ya existe, entonces los actualiza. Se debe tener cuidado de
   // no permitir que el usuario cambie su correo, pues dado que es la clave primaria
   // no debe poder ser cambiada.
-  
   async saveUser(user: User): Promise<void> {
     try {
       this.sqlInsertUpdate = `
@@ -159,17 +177,17 @@ export class DatabaseService {
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
       `;
       await this.db.run(this.sqlInsertUpdate, [
-          user.userName, 
-          user.email, 
-          user.password,
-          user.secretQuestion, 
-          user.secretAnswer, 
-          user.firstName, 
-          user.lastName,
-          user.educationalLevel.id, 
-          convertDateToString(user.dateOfBirth), 
-          user.address,
-          user.image
+        user.userName,
+        user.email,
+        user.password,
+        user.secretQuestion,
+        user.secretAnswer,
+        user.firstName,
+        user.lastName,
+        user.educationalLevel.id,
+        convertDateToString(user.dateOfBirth),
+        user.address,
+        user.image
       ]);
       await this.readUsers();
     } catch (error) {
@@ -189,7 +207,7 @@ export class DatabaseService {
       const q = 'SELECT * FROM USER;';
       const rows = (await this.db.query(q)).values;
       let users: User[] = [];
-      if (rows) {
+      if (rows?.length) { //<-- arreglo de length
         users = rows.map((row: any) => this.rowToUser(row));
       }
       this.userList.next(users);
@@ -205,7 +223,7 @@ export class DatabaseService {
     try {
       const q = 'SELECT * FROM USER WHERE userName=?;';
       const rows = (await this.db.query(q, [userName])).values;
-      return rows?.length? this.rowToUser(rows[0]) : undefined;
+      return rows?.length ? this.rowToUser(rows[0]) : undefined; //<-- arreglo de length
     } catch (error) {
       showAlertError('DataBaseService.readUser', error);
       return undefined;
@@ -231,7 +249,7 @@ export class DatabaseService {
     try {
       const q = 'SELECT * FROM USER WHERE userName=? AND password=?;';
       const rows = (await this.db.query(q, [userName, password])).values;
-      return rows? this.rowToUser(rows[0]) : undefined;
+      return rows?.length ? this.rowToUser(rows[0]) : undefined; //<-- arreglo de length
     } catch (error) {
       showAlertError('DataBaseService.findUser', error);
       return undefined;
@@ -242,7 +260,7 @@ export class DatabaseService {
     try {
       const q = 'SELECT * FROM USER WHERE userName=?;';
       const rows = (await this.db.query(q, [userName])).values;
-      return rows? this.rowToUser(rows[0]) : undefined;
+      return rows?.length ? this.rowToUser(rows[0]) : undefined; //<-- arreglo de length
     } catch (error) {
       showAlertError('DataBaseService.findUserByEmail', error);
       return undefined;
@@ -251,27 +269,15 @@ export class DatabaseService {
 
   async findUserByEmail(email: string): Promise<User | undefined> {
     try {
-      const query = 'SELECT * FROM USER WHERE email = ?';
-      const result = await this.db.query(query, [email]);
-  
-      // Agregar log para verificar el contenido de result.values
-      console.log('Resultado de la consulta:', result);
-  
-      const rows = result.values || [];  // Acceso directo a values
-  
-      if (rows.length > 0) {
-        console.log('Usuario encontrado:', rows[0]);
-        return this.rowToUser(rows[0]);
-      }
-      
-      console.log('No se encontró usuario con el correo:', email);
-      return undefined;
+      const q = 'SELECT * FROM USER WHERE email=?;';
+      const rows = (await this.db.query(q, [email])).values;
+      return rows?.length ? this.rowToUser(rows[0]) : undefined; //<-- arreglo de length
     } catch (error) {
-      showAlertError('DatabaseService.findUserByEmail', error);
+      showAlertError('DataBaseService.findUserByEmail', error);
       return undefined;
     }
   }
-  
+
 
   private rowToUser(row: any): User {
     try {
@@ -286,10 +292,23 @@ export class DatabaseService {
       user.educationalLevel = EducationalLevel.findLevel(row.educationalLevel) || new EducationalLevel();
       user.dateOfBirth = convertStringToDate(row.dateOfBirth);
       user.address = row.address;
+      user.image = row.image;
       return user;
     } catch (error) {
       showAlertError('DataBaseService.rowToUser', error);
       return new User();
+    }
+  }
+
+
+  //nuevo
+  async getLoggedInUser(): Promise<User | undefined> {
+    try {
+      const loggedInUser = await this.readUser('admin'); // Cambia si tienes una lógica de sesión real
+      return loggedInUser;
+    } catch (error) {
+      showAlertError('DataBaseService.getLoggedInUser', error);
+      return undefined;
     }
   }
 

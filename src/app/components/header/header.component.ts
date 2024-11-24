@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
@@ -7,6 +7,7 @@ import { NavController } from '@ionic/angular';
 import { logOutOutline, qrCodeOutline } from 'ionicons/icons';
 import { addIcons } from 'ionicons';
 import { AuthService } from 'src/app/services/auth.service';
+import { Location } from '@angular/common'; // Si necesitas saber la ruta actual
 
 @Component({
   selector: 'app-header',
@@ -20,16 +21,26 @@ import { AuthService } from 'src/app/services/auth.service';
     , TranslateModule // CGV-Permite usar pipe 'translate'
   ]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+
+  MostrarBotonEscaneo: boolean = false;
   
   @Output() headerClick = new EventEmitter<string>();
 
-  constructor(private navCtrl: NavController, private authService: AuthService) { 
+  constructor(private location: Location, private navCtrl: NavController, private authService: AuthService) { 
     addIcons({ logOutOutline, qrCodeOutline });
   }
 
   sendClickEvent(buttonName: string) {
     this.headerClick.emit(buttonName);
+  }
+
+  ngOnInit() {
+    if (this.location.path() === '/home') {
+      this.MostrarBotonEscaneo = true;
+    } else {
+      this.MostrarBotonEscaneo = false;
+    }
   }
 
   async logout() {

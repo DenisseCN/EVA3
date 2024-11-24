@@ -1,0 +1,156 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal">
+
+  <br>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <!--Mis datos-->
+      <ion-title size="large">{{ "Register.Title.Register" | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Cuenta -->
+<ion-item>
+  <ion-input #itemCuenta
+    [(ngModel)]="user.userName" labelPlacement="floating" label="{{ 'Register.Label.Account' | translate }}" 
+    placeholder="EJ: Atorres" 
+    (keyup.enter)="itemNombre.setFocus()">
+  </ion-input>
+</ion-item>
+
+<!-- Nombre -->
+<ion-item>
+  <ion-input #itemNombre 
+    [(ngModel)]="user.firstName" labelPlacement="floating" label="{{ 'Register.Label.Name' | translate }}" 
+    placeholder="EJ: Ana" 
+    (keyup.enter)="itemApellido.setFocus()">
+  </ion-input>
+</ion-item>
+
+<!-- Apellido -->
+<ion-item>
+  <ion-input #itemApellido 
+    [(ngModel)]="user.lastName" labelPlacement="floating" label="{{ 'Register.Label.Surname' | translate }}" 
+    placeholder="EJ: Leiva" 
+    (keyup.enter)="itemCorreo.setFocus()">
+  </ion-input>
+</ion-item>
+
+<!-- Correo -->
+<ion-item>
+  <ion-input #itemCorreo 
+    [(ngModel)]="user.email" labelPlacement="floating" label="{{ 'Register.Label.Email' | translate }}" 
+    placeholder="EJ: atorres@duocuc.cl" 
+    (keyup.enter)="itemPreguntaSecreta.setFocus()">
+  </ion-input>
+</ion-item>
+
+<!-- Pregunta Secreta -->
+<ion-item>
+  <ion-input #itemPreguntaSecreta 
+    [(ngModel)]="user.secretQuestion" labelPlacement="floating" label="{{ 'Register.Label.secretQuestion' | translate }}" 
+    (keyup.enter)="itemRespuestaSecreta.setFocus()">
+  </ion-input>
+</ion-item>
+
+<!-- Respuesta Secreta -->
+<ion-item>
+  <ion-input #itemRespuestaSecreta 
+    [(ngModel)]="user.secretAnswer" labelPlacement="floating" label="{{ 'Register.Label.secretAnswer' | translate }}" 
+    (keyup.enter)="itemPassword.setFocus()">
+  </ion-input>
+</ion-item>
+
+  <!--Educación-->
+  <ion-item #itemEducacion class="font-size-12">
+    <ion-label position="floating">{{ 'Register.Label.Education' | translate }}</ion-label>
+    <ion-select placeholder="{{ 'Register.Placeholder.Education' | translate }}" [(ngModel)]="user.educationalLevel!.id">
+      <ion-select-option *ngFor="let level of educationalLevels" [value]="level.id">
+        {{ level.name }}
+      </ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!--Fecha de Nacimiento-->
+  <ion-item #itemFechaNacimiento>
+    <table>
+      <tr>
+        <td class="fon-size-12">
+          {{ "Register.Td.Birth" | translate }}
+        </td>
+        <td class="cell-align-right">
+          <input matInput [matDatepicker]="dateOfBirth" [(ngModel)]="user.dateOfBirth"
+            [placeholder]="'dd/mm/yyyy'" class="date-width">
+        </td>
+        <td class="cell-width-0">
+          <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+          <mat-datepicker #dateOfBirth></mat-datepicker>
+        </td>
+      </tr>
+    </table>
+  </ion-item>
+  
+
+  <!-- Contraseña -->
+  <ion-item>
+    <ion-input #itemPassword 
+      [(ngModel)]="user.password" 
+      labelPlacement="floating" 
+      type="password" 
+      label="{{ 'Register.Input.Password' | translate }}" 
+      (keyup.enter)="itemConfirmarPassword.setFocus()">
+    </ion-input>
+  </ion-item>
+
+  <!-- Confirmar Contraseña -->
+  <ion-item>
+    <ion-input #itemConfirmarPassword 
+      [(ngModel)]="confirmarPassword" 
+      labelPlacement="floating" 
+      type="password" 
+      label="{{ 'Register.Input.ConfirmPassword' | translate }}" >
+    </ion-input>
+  </ion-item>
+
+  <!--Dirección-->
+  <ion-item #itemDireccion>
+    <ion-input [(ngModel)]="user.address" labelPlacement="floating" label="{{ 'Register.Input.Adress' | translate }}"
+      placeholder="EJ: Las Condes"></ion-input>
+  </ion-item>
+
+  <!--Imagen de Perfil-->
+  <!--
+  <ion-item #itemImagen class="profile-container ion-text-center">
+    <ion-avatar class="profile-avatar">
+      <ion-img [src]="user.imagen"></ion-img>
+    </ion-avatar>
+    <ion-button size="small" expand="block" (click)="mostrarOpcionesDeImagen()">{{ 'Register.Button.image' | translate }}</ion-button>
+  </ion-item>
+  -->
+
+  <ion-grid>
+    <ion-row>
+      <!--Botón Limpiar-->
+      <ion-col col-3>
+        <ion-button (click)="limpiar()" shape="block" size="small">
+          {{ "Register.Button.Clean" | translate }}
+        </ion-button>
+      </ion-col>
+
+      <!--Botón Crear mi nueva cuenta-->
+      <ion-col col-3>
+        <ion-button (click)="Registrar()" shape="block" size="small">
+          {{ "Register.Button.CreateNewAccount" | translate }}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--Botón iniciar sesión-->
+  <ion-button (click)="Ingreso()" shape="block" size="small">
+    {{ "Register.Button.Login" | translate }}
+  </ion-button>
+
+</ion-content>
+

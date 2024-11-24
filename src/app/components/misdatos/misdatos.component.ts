@@ -56,7 +56,9 @@ export class MisdatosComponent implements OnInit {
 
   async saveUser() {
     try {
-      await this.dbService.saveUser(this.user);
+      await this.dbService.saveUser(this.user).then(async () => {
+        this.authService.saveAuthUser(this.user);
+      });
       showToast('Usuario guardado correctamente');
     } catch (error) {
       showToast('Error al guardar el usuario.');

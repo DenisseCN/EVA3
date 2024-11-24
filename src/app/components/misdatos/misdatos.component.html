@@ -7,31 +7,49 @@
 <ion-content [fullscreen]="true">
 
   <ion-item>
-    <ion-input label="Usuario" labelPlacement="floating" [(ngModel)]="user.userName" readonly="true"></ion-input>
+    <ion-input label="Usuario" labelPlacement="floating" [(ngModel)]="user.userName" readonly="true">
+    </ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input label="Correo" labelPlacement="floating" [(ngModel)]="user.email"></ion-input>
+    <ion-input label="Correo" labelPlacement="floating" [(ngModel)]="user.email"
+    (keyup.enter)="itemPassword.setFocus()">
+    </ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input label="Contraseña" type="password" labelPlacement="floating" [(ngModel)]="user.password"></ion-input>
+    <ion-input #itemPassword
+    label="Contraseña" type="password" labelPlacement="floating" [(ngModel)]="user.password"
+    (keyup.enter)="itemSecretQuestion.setFocus()">
+    </ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input label="Pregunta secreta" labelPlacement="floating" [(ngModel)]="user.secretQuestion"></ion-input>
+    <ion-input #itemSecretQuestion
+    label="Pregunta secreta" labelPlacement="floating" [(ngModel)]="user.secretQuestion"
+    (keyup.enter)="itemSecretAnswer.setFocus()">
+    </ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input label="Respuesta secreta" labelPlacement="floating" [(ngModel)]="user.secretAnswer"></ion-input>
+    <ion-input #itemSecretAnswer
+    label="Respuesta secreta" labelPlacement="floating" [(ngModel)]="user.secretAnswer"
+    (keyup.enter)="itemFirstName.setFocus()">
+    </ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input label="Nombre" labelPlacement="floating" [(ngModel)]="user.firstName"></ion-input>
+    <ion-input #itemFirstName
+    label="Nombre" labelPlacement="floating" [(ngModel)]="user.firstName"
+    (keyup.enter)="itemLastName.setFocus()">
+    </ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-input label="Apellido" labelPlacement="floating" [(ngModel)]="user.lastName"></ion-input>
+    <ion-input #itemLastName
+    label="Apellido" labelPlacement="floating" [(ngModel)]="user.lastName"
+    (keyup.enter)="itemAdress.setFocus()">
+    </ion-input>
   </ion-item>
 
   <ion-item class="font-size-12">
@@ -47,7 +65,8 @@
   </ion-item>
 
   <ion-item>
-    <ion-input label="Dirección" labelPlacement="floating" [(ngModel)]="user.address"></ion-input>
+    <ion-input #itemAdress
+    label="Dirección" labelPlacement="floating" [(ngModel)]="user.address"></ion-input>
   </ion-item>
 
   <ion-button color="primary" expand="full" (click)="saveUser()">

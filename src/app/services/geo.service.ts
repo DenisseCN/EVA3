@@ -17,7 +17,7 @@ export class GeoService {
 
   async getCurrentPosition(): Promise<{ lat: number; lng: number } | null> {
     try {
-      if (this.platform.is('capacitor')) {
+      if (this.platform.is('capacitor') || this.platform.is('hybrid')) {  // <-- 'hybrid' para arreglar error
         const { coords } = await Geolocation.getCurrentPosition({ 
           enableHighAccuracy: true, 
           timeout: 10000, 
@@ -25,7 +25,7 @@ export class GeoService {
         });
         return { lat: coords.latitude, lng: coords.longitude };
 
-      } else if (this.platform.is('desktop') || this.platform.is('pwa')) {
+      } else if (this.platform.is('desktop') || this.platform.is('pwa') || this.platform.is('mobileweb')) { // <-- 'movileweb' para arreglar error
         return new Promise((resolve, reject) => {
           navigator.geolocation.getCurrentPosition(
             ({ coords }) => resolve({ 

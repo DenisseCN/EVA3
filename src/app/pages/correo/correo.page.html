@@ -30,7 +30,9 @@
       <ion-card-content>
         <ion-item class="large-rounded-item">
           <ion-label class="correo" position="stacked">{{ 'Login.Label.Email' | translate }}</ion-label>
-          <ion-input type="email" [(ngModel)]="correo" placeholder="ma.gomez@duocuc.cl"></ion-input>
+          <ion-input type="email" [(ngModel)]="correo" placeholder="ma.gomez@duocuc.cl"
+          (keyup.enter)="validateSecretQuestion()"> <!-- Ejecuta validateSecretQuestion() al presionar Enter -->
+          </ion-input>
         </ion-item>
         
         <br>

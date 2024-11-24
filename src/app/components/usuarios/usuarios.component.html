@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Gestión de Usuarios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let user of user">
+      <ion-label>{{ user.firstName }} {{ user.lastName }}</ion-label>
+      <ion-button (click)="deleteUser(user.userName)">Eliminar</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

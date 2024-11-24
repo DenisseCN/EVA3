@@ -5,15 +5,14 @@
     <ion-title slot="start">
       <img src="../../../assets/images/Duoc.png" alt="Logo Duoc UC" class="logo" style="width: 80%; max-width: 150px;">
     </ion-title>
-    
+
 
     <!-- Botones alineados a la derecha -->
     <ion-buttons slot="end">
-      <ion-button (click)="sendClickEvent('scan')" size="small">
+      <ion-button *ngIf="MostrarBotonEscaneo" (click)="sendClickEvent('scan')" size="small" fill="clear">
         <ion-icon name="qr-code-outline" color=""></ion-icon>
-        &nbsp;QR
       </ion-button>
-      
+
       <ion-button (click)="logout()" size="small" fill="clear">
         <ion-icon name="log-out-outline" color=""></ion-icon>
         {{ 'ThemePage.Button.Logout' | translate }}
