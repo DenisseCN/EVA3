@@ -108,5 +108,18 @@
     "Publi": "Publication",
     
 
-    "PreguntaPage.Titulo": "Step 2: Answer the secret question"
+    "PreguntaPage.Titulo": "Step 2: Answer the secret question",
+    "Escanear": "You must scan the attendance QR!",
+    "Sede": "Headquarters",
+    "Asignatura": "Subject ID",
+    "Seccion": "Section",
+    "NomAsig": "Subject Name",
+    "NomProfe": "Professor's Name",
+    "Dia": "Day",
+    "Binicio": "Starting Block",
+    "Btermino": "Block of Term",
+    "Inicio": "Start Time",
+    "Fin": "Hour of End",
+
+    "Descripcion": "Description"
 }

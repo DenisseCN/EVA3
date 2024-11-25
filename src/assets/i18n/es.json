@@ -108,5 +108,20 @@
     "Titulo": "Título",
     "Limpiar": "Limpiar",
     "Publicaciones": "Publicaciones Recientes",
-    "Publi": "Publicación"
+    "Publi": "Publicación",
+    "Escanear": "¡Debes escanear el QR de asistencia!",
+    "Sede": "Sede",
+    "Asignatura": "ID Asignatura",
+    "Seccion": "Sección",
+    "NomAsig": "Nombre Asignatura",
+    "NomProfe": "Nombre Profesor",
+    "Dia": "Día",
+    "Binicio": "Bloque de Inicio",
+    "Btermino": "Bloque de Término",
+    "Inicio": "Hora de Inicio",
+    "Fin": "Hora de Fin",
+
+    "Descripcion": "Descripción",
+    "IngTitulo": "Ingrese el titulo"
+
 }

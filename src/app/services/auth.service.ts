@@ -82,13 +82,14 @@ export class AuthService {
         const user = await this.db.findUser(userName, password);
 
         if (user) {
+          
           showToast(`¡Bienvenid@ ${user.firstName} ${user.lastName}!`);
           await this.saveAuthUser(user);
           this.isFirstLogin.next(true);
           await this.router.navigate(['/home']);
           return true;
         } else {
-          showToast('El correo o la password son incorrectos');
+          showToast('El correo o la contraseña son incorrectos');
           await this.router.navigate(['/login']);
           return false;
         }
@@ -115,8 +116,6 @@ export class AuthService {
       return false;
     }
   }
-
-  
 
   
 

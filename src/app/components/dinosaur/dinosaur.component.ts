@@ -3,6 +3,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonGrid, IonRow, IonCol } from '@ionic/angular/standalone';
 import { Subscription } from 'rxjs';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './dinosaur.component.html',
   styleUrls: ['./dinosaur.component.scss'],
   standalone: true,
-  imports: [IonContent, IonGrid, IonRow, IonCol, CommonModule, FormsModule]
+  imports: [IonContent, IonGrid, IonRow, IonCol, TranslateModule, CommonModule, FormsModule]
 })
 export class DinosaurComponent implements OnDestroy {
 

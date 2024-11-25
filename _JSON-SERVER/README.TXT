@@ -8,11 +8,11 @@ json-server --watch posts.json
 
 
 hacer correr api
-json-server --watch posts.json --host 192.168.84.7 --port 3005
+json-server --watch posts.json --host 192.168.0.110 --port 3005
 
 
 correr web
-ionic serve --host 192.168.84.7 --port=8102
+ionic serve --host 192.168.0.110 --port=8102
 
 abrir en chrome
-http://192.168.84.7:8102/home
+http://192.168.0.110:8102/home
