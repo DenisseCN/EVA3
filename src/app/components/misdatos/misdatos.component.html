@@ -61,9 +61,24 @@
   </ion-item>
 
   <ion-item>
-    <ion-input label="Fecha de nacimiento" labelPlacement="floating" type="date" [(ngModel)]="user.dateOfBirth" (ionChange)="onDateOfBirthChange($event)"></ion-input>
+    <ion-label position="stacked">
+      Fecha de nacimiento
+    </ion-label>
+    
+    <div class="date-container">
+      <input matInput 
+             [matDatepicker]="dateOfBirth" 
+             [(ngModel)]="user.dateOfBirth"
+             (ionChange)="onDateOfBirthChange($event)" 
+             placeholder="dd/mm/yyyy" 
+             class="date-width">
+    
+      <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+    </div>
+    
+    <mat-datepicker #dateOfBirth></mat-datepicker>
   </ion-item>
-
+  
   <ion-item>
     <ion-input #itemAdress
     label="Dirección" labelPlacement="floating" [(ngModel)]="user.address"></ion-input>

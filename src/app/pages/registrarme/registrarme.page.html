@@ -73,6 +73,25 @@
   </ion-item>
 
   <!--Fecha de Nacimiento-->
+  <!--Fecha de Nacimiento-->
+  <ion-item #itemFechaNacimiento>
+    <ion-label position="stacked">
+      {{ "Register.Td.Birth" | translate }}
+    </ion-label>
+    
+    <div class="date-container">
+      <input matInput 
+        [matDatepicker]="dateOfBirth" 
+        [(ngModel)]="user.dateOfBirth" 
+        [placeholder]="'dd/mm/yyyy'"
+        class="date-width">
+
+      <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+      <mat-datepicker #dateOfBirth></mat-datepicker>
+    </div>
+
+  </ion-item>
+  <!--
   <ion-item #itemFechaNacimiento>
     <table>
       <tr>
@@ -90,6 +109,7 @@
       </tr>
     </table>
   </ion-item>
+  -->
   
 
   <!-- Contraseña -->

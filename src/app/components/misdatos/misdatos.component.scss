@@ -9,10 +9,10 @@ ion-content {
   --background: linear-gradient(45deg, #fafafa, #00076d);
 }
 
-ion-title{
+ion-title {
   font-size: 20px;
   color: #000000;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-weight: bolder;
 }
 
@@ -22,8 +22,35 @@ ion-toolbar {
   text-align: center;
 }
 
-ion-item, ion-input, ion-select{
+ion-item, ion-input, ion-select {
   --background: #ffffff;
   --color: #000000;
   font-size: 18px;
+
+  /* Estilo específico para el contenedor del input de fecha */
+  .date-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Estilo específico para el input de fecha */
+  .date-container .date-width {
+    background-color: #fafafa; /* Fondo claro */
+    color: #333; /* Color de texto */
+    border: 1px solid #7d7c7c;
+    padding: 8px; /* Espaciado interno para mayor claridad */
+    border-radius: 4px;
+    flex: 1; /* Hace que el input ocupe todo el espacio disponible */
+  }
+}
+
+
+mat-datepicker-toggle {
+  margin-left: 10px;  /*Ajusta el espacio entre el input y el botón del datepicker*/
+}
+
+mat-datepicker-toggle .mat-icon {
+  color: #333;
 }

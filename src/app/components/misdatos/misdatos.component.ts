@@ -10,6 +10,9 @@ import { showToast } from 'src/app/tools/message-functions';
 import { TranslateModule } from '@ngx-translate/core';
 import { addIcons } from 'ionicons';
 import { checkboxOutline, checkmarkDoneCircleOutline, logOutOutline, thumbsUpOutline } from 'ionicons/icons';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-misdatos',
@@ -21,6 +24,7 @@ import { checkboxOutline, checkmarkDoneCircleOutline, logOutOutline, thumbsUpOut
     CommonModule,
     FormsModule,
     IonicModule,
+    MatDatepickerModule, MatInputModule, MatNativeDateModule
   ]
 })
 export class MisdatosComponent implements OnInit {

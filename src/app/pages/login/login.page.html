@@ -40,7 +40,7 @@
           label="{{ 'Login.Label.Email' | translate }}" 
           id="correo"
           labelPlacement="floating"
-         
+          [(ngModel)]="correo"
           placeholder="{{ 'Login.Placeholder.Email' | translate }}"
           (keyup.enter)="passwordInput.setFocus()"> <!-- Utiliza la referencia de plantilla directamente -->
         </ion-input>
@@ -49,9 +49,9 @@
       <ion-item class="margin-bottom-6 float-right-landscape">
         <ion-input #passwordInput 
           label="{{ 'Login.Label.Password' | translate }}"
-          labelPlacement="floating"
-          [(ngModel)]="password" 
           id="password"
+          labelPlacement="floating"
+          [(ngModel)]="password"
           placeholder="{{ 'Login.Placeholder.Password' | translate }}"
           type="password"
           (keyup.enter)="login()"> <!-- Ejecuta login() al presionar Enter -->

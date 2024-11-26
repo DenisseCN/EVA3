@@ -20,6 +20,17 @@ ion-toolbar {
   }
 }
 
+.date-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.date-width {
+  flex: 1; /* Hace que el input ocupe el espacio disponible */
+}
+
 .profile-container {
   margin-bottom: 20px;
 }
