@@ -54,6 +54,10 @@
     "HomePage.Button.Dinosaur": "Tüfachi Chod",
     "HomePage.Button.Forum": "Trapu",
     "HomePage.Button.Data": "Iñche mew",
+    "HomePage.Button.Users": "Ñiedmapu",
+
+    "UsersPage.Header.Title": "Ñi wüñümnien ñi we tripantü",
+    "UsersPage.Button.DeleteUser": "Ñiñ",
 
     "ThemePage.Label.Theme": "Dugün",
     "ThemePage.Label.ColorTheme": "Dugün de kolor:",

@@ -22,27 +22,34 @@ import { IonList, IonHeader, IonToolbar, IonTitle, IonItem
 export class UsuariosComponent implements OnInit{
 
   user: User[] = [];
+  isAdmin: boolean = false;
 
   constructor(private db: DatabaseService) {}
 
   ngOnInit() {
     this.loadUsers();
+    this.checkIfAdmin();
   }
 
-  // Cargar todos los usuarios de la base de datos
   async loadUsers() {
-    this.user = await this.db.readUsers(); // Método que obtendría todos los usuarios
+    this.user = await this.db.readUsers();
+  }
+
+  // Verificar si el usuario logueado es el admin
+  async checkIfAdmin() {
+    const authenticatedUser = await this.db.getLoggedInUser();
+    if (authenticatedUser && authenticatedUser.userName === 'admin') {
+      this.isAdmin = true; // Marcar que es admin
+    }
   }
 
   // Eliminar un usuario (excepto el admin)
   async deleteUser(userName: string) {
-    /*
-    if (this.user?.userName !== userName) {
+    if (userName !== 'admin') {  // Evita eliminar al admin
       await this.db.deleteByUserName(userName); // Método para eliminar un usuario
       this.loadUsers(); // Recargar la lista de usuarios después de eliminar
     } else {
-      alert('No puedes eliminarte a ti mismo.');
+      alert('No puedes eliminar al usuario administrador.');
     }
-      */
   }
 }

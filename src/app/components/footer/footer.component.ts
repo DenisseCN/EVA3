@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { IonFooter, IonToolbar, IonSegment, IonSegmentButton, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { gridOutline, homeOutline, pawOutline, pencilOutline, qrCodeOutline, schoolOutline } from 'ionicons/icons';
+import { gridOutline, homeOutline, pawOutline, pencilOutline, qrCodeOutline, schoolOutline, peopleOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-footer',
@@ -19,16 +19,15 @@ import { gridOutline, homeOutline, pawOutline, pencilOutline, qrCodeOutline, sch
   ]
 })
 export class FooterComponent {
-
-  selectedButton = 'welcome';
+  @Input() isAdmin = false; // Indicador del rol de administrador
+  selectedButton = 'welcome'; // Botón seleccionado por defecto
   @Output() footerClick = new EventEmitter<string>();
 
   constructor() { 
-    addIcons({ homeOutline, qrCodeOutline, pawOutline, pencilOutline, schoolOutline, gridOutline });
+    addIcons({qrCodeOutline,schoolOutline,pencilOutline,gridOutline,peopleOutline,homeOutline,pawOutline});
   }
 
   sendClickEvent($event: any) {
     this.footerClick.emit(this.selectedButton);
   }
-
 }

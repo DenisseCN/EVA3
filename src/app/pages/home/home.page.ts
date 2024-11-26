@@ -37,6 +37,7 @@ export class HomePage {
   selectedComponent = 'welcome';
 
   user: User | undefined;
+  isAdmin: boolean = false; // Indica si el usuario actual es administrador
 
   constructor(
       private db: DatabaseService
@@ -45,7 +46,10 @@ export class HomePage {
     , private cdr: ChangeDetectorRef) { }
 
   ionViewWillEnter() {
+    /*
     this.changeComponent('qrwebscanner');
+    */
+    this.checkUserRole();
   }
 
   async headerClick(button: string) {
@@ -78,28 +82,37 @@ export class HomePage {
     
     this.changeComponent('welcome');
   }
+  
   // Verifica si el usuario es admin
   async checkUserRole() {
-    this.user = await this.db.getLoggedInUser();
-
-    if (this.user?.userName === 'admin') {
-      debugger
-      // Si es admin, mostramos el componente de usuarios
-      this.selectedComponent = 'usuarios';
-      console.log('ingresado como admin');
-      console.log('Selected Component:', this.selectedComponent);
-    } else {
-      // Si no es admin, muestra el componente QR
-      this.selectedComponent = 'qrwebscanner';
-      console.log('ingresado como usuario común');
-      console.log('Selected Component:', this.selectedComponent);
-    }
+    try {
+      const authenticatedUser = await this.auth.readAuthUser();
   
-    // Forzar la detección de cambios
-    this.cdr.detectChanges();
+      if (authenticatedUser) {
+        this.user = authenticatedUser; 
+        this.isAdmin = this.user.userName === 'admin'; // Verifica si es admin
+  
+        // Establece el componente inicial basado en el rol
+        this.selectedComponent = this.isAdmin ? 'usuarios' : 'qrwebscanner';
+  
+        console.log(`Usuario identificado: ${this.user.userName}, isAdmin: ${this.isAdmin}`);
+      } else {
+        console.error('No se encontró un usuario autenticado.');
+        this.selectedComponent = 'welcome'; // Componente por defecto si no hay usuario
+      }
+  
+      this.cdr.detectChanges();
+    } catch (error) {
+      console.error('Error al verificar el usuario logueado:', error);
+      this.selectedComponent = 'welcome'; // Fallback en caso de error
+    }
   }
-
+  
   footerClick(button: string) {
+    if (this.isAdmin && ['qrwebscanner', 'dinosaur'].includes(button)) {
+      console.warn('El administrador no tiene acceso a este componente.');
+      return; // Bloquea el acceso
+    }
     this.selectedComponent = button;
   }
 
@@ -109,3 +122,32 @@ export class HomePage {
   }
 
 }
+
+/*
+  async checkUserRole() {
+    try {
+      // Obtén el usuario autenticado desde AuthService
+      const authenticatedUser = await this.auth.readAuthUser();
+  
+      if (authenticatedUser) {
+        this.user = authenticatedUser; // Asigna el usuario logueado
+  
+        if (this.user.userName === 'admin') {
+          this.selectedComponent = 'usuarios'; // Componente especial para admin
+          console.log('Usuario administrador identificado.');
+        } else {
+          this.selectedComponent = 'qrwebscanner'; // Componente estándar para otros usuarios
+          console.log('Usuario común identificado:', this.user.userName);
+        }
+      } else {
+        console.error('No se encontró un usuario autenticado.');
+        this.selectedComponent = 'qrwebscanner'; // Componente por defecto si no hay usuario
+      }
+  
+      this.cdr.detectChanges(); // Actualiza la vista
+    } catch (error) {
+      console.error('Error al verificar el usuario logueado:', error);
+      this.selectedComponent = 'qrwebscanner'; // Fallback en caso de error
+    }
+  }
+    */

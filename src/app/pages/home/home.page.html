@@ -3,42 +3,42 @@
 </app-header>
 <br>
 
-
 <ion-content [fullscreen]="true">
   <app-welcome>
   </app-welcome>
-
-  <ng-container *ngIf="selectedComponent === 'qrwebscanner'">
-    <app-qrwebscanner 
-      (scanned)="webQrScanned($event)"
-      (stopped)="webQrStopped()">
-    </app-qrwebscanner>
-  </ng-container>
   
   <app-welcome 
     *ngIf="selectedComponent === 'welcome'">
   </app-welcome>
 
-  <app-dinosaur 
-    *ngIf="selectedComponent === 'dinosaur'">
-  </app-dinosaur>
-
+  <ng-container *ngIf="!isAdmin">
+    <ng-container *ngIf="selectedComponent === 'qrwebscanner'">
+      <app-qrwebscanner 
+        (scanned)="webQrScanned($event)"
+        (stopped)="webQrStopped()">
+      </app-qrwebscanner>
+    </ng-container>
+  
+    <app-dinosaur 
+      *ngIf="selectedComponent === 'dinosaur'">
+    </app-dinosaur>
+  </ng-container>
+  
   <app-forum 
     *ngIf="selectedComponent === 'forum'">
   </app-forum>
+  
   <app-misdatos
-  *ngIf="selectedComponent === 'misdatos'">
+    *ngIf="selectedComponent === 'misdatos'">
   </app-misdatos>
-
-  <!-- Componente de Gestión de Usuarios solo para administradores -->
-  <ng-container *ngIf="selectedComponent === 'usuarios'">
+  
+  <ng-container *ngIf="isAdmin && selectedComponent === 'usuarios'">
     <app-usuarios></app-usuarios>
   </ng-container>
-
-
-
+  
 </ion-content>
 
 <app-footer
+  [isAdmin]="isAdmin"
   (footerClick)="footerClick($event)">
 </app-footer>

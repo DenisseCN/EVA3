@@ -54,6 +54,10 @@
     "HomePage.Button.Dinosaur": "My class",
     "HomePage.Button.Forum": "Forum",
     "HomePage.Button.Data": "My data",
+    "HomePage.Button.Users": "Users",
+
+    "UsersPage.Header.Title": "User Management",
+    "UsersPage.Button.DeleteUser": "Delete",
 
     "ThemePage.Label.Theme": "Theme",
     "ThemePage.Label.ColorTheme": "Color Theme:",

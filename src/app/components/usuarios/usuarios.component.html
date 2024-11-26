@@ -1,6 +1,7 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Gestión de Usuarios</ion-title>
+    <!-- Título Gestión de Usuarios -->
+    <ion-title>{{ "UsersPage.Header.Title" | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,7 +9,10 @@
   <ion-list>
     <ion-item *ngFor="let user of user">
       <ion-label>{{ user.firstName }} {{ user.lastName }}</ion-label>
-      <ion-button (click)="deleteUser(user.userName)">Eliminar</ion-button>
+      <!-- Botón de eliminar | Oculto para el usuario admin -->
+      <ion-button *ngIf="user.userName !== 'admin'" (click)="deleteUser(user.userName)">
+        {{ "UsersPage.Button.DeleteUser" | translate }}
+      </ion-button>
     </ion-item>
   </ion-list>
 </ion-content>
