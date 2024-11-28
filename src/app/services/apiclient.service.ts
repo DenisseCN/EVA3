@@ -19,7 +19,7 @@ export class APIClientService {
   };
 
   //apiUrl = 'http://localhost:3000';
-  apiUrl = 'http://192.168.1.125:3005';
+  apiUrl = 'http://192.168.198.7:3005';
 
 private intervalId: any;
 
