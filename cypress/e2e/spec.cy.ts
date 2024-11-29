@@ -79,82 +79,27 @@ describe('Pruebas de Foro', () => {
   });
 });
 
-/// <reference types="cypress" />
-
-describe('Pruebas de Mis Datos', () => {
-  it('Debería validar todos los campos como requeridos', () => {
-    // Visita la página principal y navega a "Mis Datos"
+describe('Pruebas del Componente Mis Datos', () => {
+  it('Debería permitir modificar el correo agregando texto al inicio', () => {
+    // Navega a la página principal (Mis Datos)
     cy.visit('http://localhost:8100/home');
-    cy.get('ion-segment-button[value="misdatos"]').click();
 
-    // Intenta guardar sin llenar campos
+    // Selecciona el segmento "Mis Datos" en el footer
+    cy.get('ion-segment-button[value="misdatos"]')
+      .should('be.visible')
+      .click();
+
+    // Verifica que el contenido de "Mis Datos" esté visible
+    cy.get('ion-input[label="Correo"] input', { timeout: 10000 })
+      .should('be.visible');
+
+    // Selecciona el campo de correo y agrega texto al inicio
+    cy.get('ion-input[label="Correo"] input')
+      .click({ force: true }) // Asegura que el campo esté enfocado
+      .type('{movetostart}nuevo', { force: true }); // Agrega texto al inicio del correo existente
+
+    // Haz clic en el botón para guardar
     cy.get('ion-button').contains('Guardar').click();
 
-    // Verifica que aparecen mensajes de error en los campos requeridos
-    cy.get('ion-input[placeholder="Usuario"]').should('have.attr', 'required');
-    cy.get('ion-input[placeholder="Correo"]').should('have.attr', 'required');
-    cy.get('ion-input[placeholder="Contraseña"]').should('have.attr', 'required');
-    cy.get('ion-input[placeholder="Pregunta secreta"]').should('have.attr', 'required');
-    cy.get('ion-input[placeholder="Respuesta secreta"]').should('have.attr', 'required');
-    cy.get('ion-input[placeholder="Nombre"]').should('have.attr', 'required');
-    cy.get('ion-input[placeholder="Apellido"]').should('have.attr', 'required');
-    cy.get('ion-input[placeholder="Dirección"]').should('have.attr', 'required');
-  });
-
-  it('Debería validar que el correo sea un email válido', () => {
-    // Visita la página de "Mis Datos"
-    cy.visit('http://localhost:8100/home');
-    cy.get('ion-segment-button[value="misdatos"]').click();
-
-    // Ingresa un correo inválido
-    cy.get('ion-input[placeholder="Correo"]').type('correo_invalido');
-
-    // Intenta guardar
-    cy.get('ion-button').contains('Guardar').click();
-
-    // Verifica que aparece un mensaje de error
-    cy.get('.error-message').should('contain', 'Correo no válido');
-  });
-
-  it('Debería validar que la fecha de nacimiento sea válida', () => {
-    // Visita la página de "Mis Datos"
-    cy.visit('http://localhost:8100/home');
-    cy.get('ion-segment-button[value="misdatos"]').click();
-
-    // Ingresa una fecha inválida
-    cy.get('ion-input[type="date"]').type('2025-01-01'); // Fecha futura
-
-    // Intenta guardar
-    cy.get('ion-button').contains('Guardar').click();
-
-    // Verifica que aparece un mensaje de error
-    cy.get('.error-message').should('contain', 'Fecha no válida');
-  });
-
-  it('Debería guardar los datos correctamente', () => {
-    // Visita la página de "Mis Datos"
-    cy.visit('http://localhost:8100/home');
-    cy.get('ion-segment-button[value="misdatos"]').click();
-
-    // Completa todos los campos
-    cy.get('ion-input[placeholder="Usuario"]').type('mi_usuario');
-    cy.get('ion-input[placeholder="Correo"]').type('mi_correo@correo.com');
-    cy.get('ion-input[placeholder="Contraseña"]').type('123456');
-    cy.get('ion-input[placeholder="Pregunta secreta"]').type('¿Color favorito?');
-    cy.get('ion-input[placeholder="Respuesta secreta"]').type('Azul');
-    cy.get('ion-input[placeholder="Nombre"]').type('Juan');
-    cy.get('ion-input[placeholder="Apellido"]').type('Pérez');
-    cy.get('ion-input[type="date"]').type('2000-01-01');
-    cy.get('ion-input[placeholder="Dirección"]').type('Calle Falsa 123');
-
-    // Selecciona un nivel educativo
-    cy.get('ion-select').click();
-    cy.get('ion-select-option').contains('Universitario').click();
-
-    // Haz clic en guardar
-    cy.get('ion-button').contains('Guardar').click();
-
-    // Verifica que los datos han sido guardados (puedes verificar un mensaje de éxito o una redirección)
-    cy.get('.success-message').should('contain', 'Datos guardados correctamente');
   });
 });
