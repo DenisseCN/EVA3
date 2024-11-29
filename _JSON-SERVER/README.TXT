@@ -8,7 +8,7 @@ json-server --watch posts.json
 
 
 hacer correr api
-json-server --watch dbposts.json --host 192.168.198.7 --port 3005
+json-server --watch dbposts.json --host 192.168.1.125 --port 3005
 
 
 correr web
