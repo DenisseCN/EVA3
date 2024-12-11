@@ -68,11 +68,14 @@
 
 .stop-button {
   position: absolute;
-  top: 10px; /* Ajusta para poner el botón dentro del recuadro del video */
+  bottom: 20%; /* Ajusta para poner el botón dentro del recuadro del video */
   left: 50%;
   transform: translateX(-50%); /* Centra horizontalmente */
   z-index: 10; /* Asegura que el botón esté sobre el video y el overlay */
   padding: 8px 16px;
+  color: #f9f5f5;
+  font-size: 14px;
+  border-radius: 20px;
 }
 
 .video-container {
@@ -81,3 +84,26 @@
   width: 100%;
 }
 
+
+// Estilos para imagen placeholder
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Ocupa todo el contenedor */
+  text-align: center;
+  color: #555;
+
+  img {
+    max-width: 80%;
+    max-height: 300px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #333;
+  }
+}

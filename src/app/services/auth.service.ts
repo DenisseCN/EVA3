@@ -5,6 +5,7 @@ import { showAlertError, showToast } from 'src/app/tools/message-functions';
 import { User } from '../model/user';
 import { Storage } from '@ionic/storage-angular';
 import { DatabaseService } from './database.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,11 @@ export class AuthService {
   storageQrCodeKey = 'QR_CODE';
   qrCodeData = new BehaviorSubject<string | null>(null);
 
-  constructor(private router: Router, private db: DatabaseService, private storage: Storage) { }
+  constructor(
+    private router: Router, 
+    private db: DatabaseService, 
+    private storage: Storage,
+    private translate: TranslateService) { }
 
   async initializeAuthService() {
     try {
@@ -83,19 +88,28 @@ export class AuthService {
 
         if (user) {
           
-          showToast(`¡Bienvenid@ ${user.firstName} ${user.lastName}!`);
+          // Traduce el mensaje de bienvenida
+          const welcomeMessage = await this.translate.get('AuthService.Welcome', {
+            firstName: user.firstName,
+            lastName: user.lastName
+          }).toPromise();
+          showToast(welcomeMessage);
+
           await this.saveAuthUser(user);
           this.isFirstLogin.next(true);
           await this.router.navigate(['/home']);
           return true;
         } else {
-          showToast('La cuenta o la contraseña son incorrectas');
+          // Traduce el mensaje de error
+          const errorMessage = await this.translate.get('AuthService.Error.InvalidCredentials').toPromise();
+          showToast(errorMessage);
           await this.router.navigate(['/login']);
           return false;
         }
       }
     } catch (error) {
-      showAlertError('AuthService.login', error);
+      const errorAlert = await this.translate.get('AuthService.Error.General').toPromise();
+      showAlertError('AuthService.login', errorAlert);
       return false;
     }
   }

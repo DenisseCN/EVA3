@@ -21,6 +21,7 @@ export class QrWebScannerComponent implements OnDestroy {
 
   qrData: string = '';
   mediaStream: MediaStream | null = null; // Almacena el flujo de medios
+  isScanning: boolean = true; // Controla si el escaneo está activo
 
   constructor() 
   { 
@@ -28,6 +29,7 @@ export class QrWebScannerComponent implements OnDestroy {
   }
 
   async startQrScanningForWeb() {
+    this.isScanning = true;
     this.mediaStream = await navigator.mediaDevices.getUserMedia({
       video: { facingMode: 'environment' }
     });
@@ -44,6 +46,11 @@ export class QrWebScannerComponent implements OnDestroy {
     } else {
       requestAnimationFrame(this.verifyVideo.bind(this));
     }
+  }
+
+  /* Simplificación para botón de detener escaneo */
+  toggleQrScanning(): void {
+    this.isScanning ? this.stopQrScanning() : this.startQrScanningForWeb();
   }
 
   getQrData(): boolean {
@@ -68,8 +75,9 @@ export class QrWebScannerComponent implements OnDestroy {
 
   stopQrScanning(): void {
     this.stopCamera();
+    this.isScanning = false; // Cambia el estado del escaneo
     this.stopped.emit();
-  }
+  }  
 
   ngOnDestroy() {
     this.stopCamera();

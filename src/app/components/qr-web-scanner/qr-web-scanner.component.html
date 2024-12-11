@@ -1,15 +1,27 @@
 <ion-content class="ion-padding ion-text-center" class="video-container">
 
 
-  <!--<ion-button class="stop-button" (click)="stopQrScanning()">
-    Detener escaneo de QR
-  </ion-button> -->
+  <!--
+  <ion-button class="stop-button" (click)="toggleQrScanning()">
+    {{ isScanning ? 'Detener escaneo de QR' : 'Iniciar escaneo de QR' }}
+  </ion-button>  
+  -->
 
-  <div class="frame">
+  <div class="frame"*ngIf="isScanning" >
     <video class="video" #video></video>
     <div class="qr-overlay"></div>
     <div color="primary" class="moving-horizontal-line"></div>
   </div>
+
+  <!--
+  Imagen de placeholder
+  <div *ngIf="!isScanning">
+    <div class="placeholder">
+      <img src="/assets/images/qrPlaceholder.png" alt="Presiona para escanear QR" />
+      <p>Presiona el botón de QR en la parte superior para iniciar el escaneo.</p>
+    </div>
+  </div>
+  -->
 
   <canvas #canvas hidden></canvas>
 

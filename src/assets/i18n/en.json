@@ -9,6 +9,14 @@
     
     "Start.StartNewExperience": "Start a new experience",
 
+    "AuthService": {
+    "Welcome": "Welcome, {{firstName}} {{lastName}}!",
+    "Error": {
+      "InvalidCredentials": "The username or password is incorrect",
+      "General": "An error occurred during authentication"
+    }
+  },
+
     "Bienvenido":"Welcome",
     "ForumPage": "Publications Management",
     "Login.Title.Login": "Login",

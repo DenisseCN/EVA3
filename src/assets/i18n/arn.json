@@ -9,7 +9,15 @@
     
     "Start.StartNewExperience": "Eymi müley kiñe küpan trawün",
 
-    "Bienvenido":"Küme tüfachi müley tañi",
+    "AuthService": {
+    "Welcome": "Küme tünngelu {{firstName}} {{lastName}}!",
+    "Error": {
+      "InvalidCredentials": "Rume kume feywel ta nor kaken wallontu",
+      "General": "Fey rume reñma ad küpal duam"
+    }
+  },
+
+    "Bienvenido":"Küme tünngelu",
     "ForumPage": "Manjares de küpal",
     "Login.Title.Login": "Wüñolün",
     "Login.Label.VolverIniciar": "küpa",
